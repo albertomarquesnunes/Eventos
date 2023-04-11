@@ -107,23 +107,21 @@ namespace ProEventos.API.Controllers
             }
             catch (Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError,$"Erro ao tentar adicionar evento. Erro: {ex.Message}");
+                return this.StatusCode(StatusCodes.Status500InternalServerError,$"Erro ao tentar atualizar evento. Erro: {ex.Message}");
             }
         }
         
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-                  try
+            try
             {
-            var evento = await _eventosService.DeleteEvento(id);
-            if(evento==null) return BadRequest("Erro ao tentar Atualizar evento.");
-            
-            return Ok(evento);
+               
+                return await _eventosService.DeleteEvento(id)? Ok("Deletado."): BadRequest("Evento não deletado");
             }
             catch (Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError,$"Erro ao tentar adicionar evento. Erro: {ex.Message}");
+                return this.StatusCode(StatusCodes.Status500InternalServerError,$"Erro ao tentar deletar evento. Erro: {ex.Message}");
             }
         }
     }
