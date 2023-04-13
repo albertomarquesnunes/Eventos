@@ -17,9 +17,14 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TituloComponent } from './Shared/Titulo/Titulo.component';
-import { PerfilComponent } from './Componentes/Perfil/Perfil.component';
+import { PerfilComponent } from './Componentes/user/Perfil/Perfil.component';
 import { ContatosComponent } from './Componentes/Contatos/Contatos.component';
 import { DashboardComponent } from './Componentes/Dashboard/Dashboard.component';
+import { EventoDetalheComponent } from './Componentes/Eventos/evento-detalhe/evento-detalhe.component';
+import { EventoListaComponent } from './Componentes/Eventos/evento-lista/evento-lista.component';
+import { UserComponent } from './Componentes/user/user.component';
+import { LoginComponent } from './Componentes/user/login/login.component';
+import { RegistrationComponent } from './Componentes/user/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,12 @@ import { DashboardComponent } from './Componentes/Dashboard/Dashboard.component'
      EventosComponent,
      NavComponent,
      TituloComponent,
-     DateTimeFormatPipe
+     DateTimeFormatPipe,
+     EventoDetalheComponent,
+     EventoListaComponent,
+     UserComponent,
+     LoginComponent,
+     RegistrationComponent
    ],
   imports: [
     BrowserModule,
