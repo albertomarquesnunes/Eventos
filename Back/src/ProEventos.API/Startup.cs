@@ -1,4 +1,6 @@
 
+using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +30,7 @@ namespace ProEventos.API
             services.AddDbContext<ProEventosContext>(
                 context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddCors();
             services.AddControllers().AddNewtonsoftJson(x=>x.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddScoped<IEventosService, EventoService>();

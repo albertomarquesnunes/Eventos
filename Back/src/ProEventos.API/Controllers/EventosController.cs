@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using ProEventos.Persistence.Contexts;
-using ProEventos.Domain;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProEventos.Application.Interfaces;
 using System.Threading.Tasks;
 using System;
 using Microsoft.AspNetCore.Http;
+using ProEventos.Application.Dto;
 
 namespace ProEventos.API.Controllers
 {
@@ -29,9 +26,8 @@ namespace ProEventos.API.Controllers
             {
 
             var eventos = await _eventosService.GetAllEventosAsync(true);
-
             if(eventos==null) return NotFound("Nenhum evento encontrado.");
-
+           
             return Ok(eventos);
 
             }
@@ -80,7 +76,7 @@ namespace ProEventos.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(Evento model)
+        public async Task<IActionResult> Post(EventoDTO model)
         {
             try
             {
@@ -96,7 +92,7 @@ namespace ProEventos.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, Evento model)
+        public async Task<IActionResult> Put(int id, EventoDTO model)
         {
             try
             {
