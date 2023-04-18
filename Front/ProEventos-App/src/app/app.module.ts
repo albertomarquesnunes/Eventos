@@ -8,7 +8,7 @@ import { PalestrantesComponent } from './Componentes/Palestrantes/Palestrantes.c
 import { EventosComponent } from './Componentes/Eventos/Eventos.component';
 import { NavComponent } from './Shared/Nav/Nav.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventoService } from './Services/evento.service';
 import { DateTimeFormatPipe } from './Helpers/DateTimeFormat.pipe';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -60,6 +60,7 @@ import { RegistrationComponent } from './Componentes/user/registration/registrat
               progressBar:true,
             }),
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [EventoService],
   bootstrap: [AppComponent],

@@ -2,13 +2,32 @@
 
 	<div class="mx-auto text-center shadow-sm bg-white rounded p-5 my-5">
 
-		<form class="form-signin">
+		<form class="form-signin" [formGroup]="form">
+
 			<i class="fa fa-users mb-2"></i>
 			<h1 class="h3 mb-3 font-weight-normal">Entrar com</h1>
-			<label for="username" class="sr-only">Usuário</label>
-			<input type="email" id="username" class="form-control" placeholder="Usuário" name="username" required>
+      <div class="form-group">
+        <label for="username" class="sr-only">Usuário</label>
+        <input type="email" id="username" class="form-control" placeholder="Email do Usuário" name="username"  formControlName="username"
+                [ngClass]="{'is-invalid': f.username?.errors && f.username?.touched}"    >
+                <div *ngIf= "f.username?.errors.required  && f.username?.touched" class="invalid-feedback">
+                  Usuário é obrigatório
+                </div>
+                <div *ngIf= "f.username?.errors.email && f.username?.touched" class="invalid-feedback">
+                  Email Invalido!
+                </div>
+       </div>
+       <div class="form-group">
 			<label for="password" class="sr-only">Password</label>
-			<input type="password" id="password" class="form-control" placeholder="Senha" name="password" required>
+			<input type="password" id="password" class="form-control" placeholder="Senha" name="password" formControlName="password"
+                      [ngClass]="{'is-invalid': f.password?.errors && f.password?.touched}" >
+                      <div *ngIf= "f.password?.errors.required  && f.password?.touched" class="invalid-feedback">
+                        A senha é obrigatória.
+                      </div>
+                      <div *ngIf= "f.password?.errors.minlength && f.password?.touched" class="invalid-feedback">
+                        A senha deve conter ao menos 8 caracteres!
+                      </div>
+       </div>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
 			<p class="mt-4 mb-2 text-muted">Não tem login? Cadastre-se abaixo</p>
 			<a class="btn btn-lg btn-link btn-block" routerLink="/user/registration">Quero me cadastrar</a>
